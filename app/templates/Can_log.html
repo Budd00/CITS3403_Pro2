@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Candidate log in</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      .log{
+        background-color: #676969FF;
+        height: 80px;
+        padding: 10px;
+      }
+       .content{
+        background-color: #DCE2E2FF;
+        padding: 16px;
+        width: 70%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="log">
+      <h3 style="color: #FFFFFFFF">Log in</h3>
+    </div><br><br><br>
+
+    <h3>Please fill your personal information:</h3><br>
+
+    <form action = '' method="POST">
+        {{ form.hidden_tag() }}
+        <div class="container">
+            <div class="row">
+        <p>
+            {{ form.username.label }} <br>
+            {{ form.username(size = 32) }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[ {{ error}} ]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size = 32) }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">[ {{ error}} ]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.remember_me() }}
+            {{ form.remember_me.label }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </div>
+    </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
