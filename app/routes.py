@@ -22,4 +22,4 @@ def login():
 @app.route('/adminLogin', methods = ['GET','POST'])
 def adminLogin():
     form = LoginForm()
-    return render_template('Admin_log.html')
+    return render_template('Admin_log.html', form = form)
