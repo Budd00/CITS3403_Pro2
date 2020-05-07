@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quiz Application</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      .start{
+        background-color: #4D4F4FFF;
+        width: all;
+        height: 80px;
+      }
+      #pic{
+        height: 80px;
+        width: all;
+      }
+      .jumbotron{
+        background-color: #3D3F3FFF;
+      }
+      .jumb{
+        color: #FFFFFFFF;
+        font-style: normal;
+        text-align: center;
+      }
+      .three_form{
+        padding-left: 16px;
+      }
+      .candidate{
+        background-color: #D2D8D8FF;
+        padding: 10px;
+        width: 70%;
+      }
+      .Admin{
+        background-color: #D2D8D8FF;
+        padding: 10px;
+        width: 70%;
+      }
+      .result,.logout{
+        background-color: #D2D8D8FF;
+        padding: 10px;
+        width: 70%;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="start">
+      <img src="uwa2.png" class="img-responsiv" id="pic" alt="uwa logo">
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="jumb">
+          <h2>Welcome to the quiz page</h2>
+        </div>
+      </div>
+    </div><br><br>
+    
+    <h3>Please select one of following:</h3><br>
+    <div class="three_form">
+      <div class="candidate">
+        <h4><a href='/Login'>Candidate</a></h4>
+        <p>Please cilck to log in if you are enrolled candidate.</p>
+      </div><br>
+      <div class="Admin">
+        <h4><a href="/adminLogin">Administrator</a></h4>
+        <p>Please click to log in if you are Administrator.</p>
+      </div><br>
+      <div class="result">
+        <h4><a href="#">Result</a></h4>
+        <p>Please click to see aggregate results for quizzes.</p>
+      </div><br>
+      <div class="logout">
+        <h4><a href="/logout">logout</a></h4>
+        <p>Please click to logout.</p>
+      </div>
+    </div><br>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
