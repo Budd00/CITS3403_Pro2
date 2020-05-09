@@ -27,7 +27,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('get_test')
+            next_page = url_for('welcome')
         return redirect(next_page)
     return render_template('Can_log.html', title='Sign In', form=form)
 
@@ -63,3 +63,15 @@ def register():
 @login_required
 def get_test():
     return render_template('test.html',title='test')
+
+
+@app.route('/welcome', methods=['GET', 'POST'])
+@login_required
+def welcome():
+    return render_template('welcome.html', title='Home')
+
+
+@app.route('/mark', methods=['GET', 'POST'])
+@login_required
+def mark():
+    return render_template('mark.html', title='Home')
