@@ -40,17 +40,25 @@ class questions(db.Model):
     content = db.Column(db.String(500), unique=True)
     stand_answer = db.Column(db.String(500), unique=True)
     mark = db.Column(db.Integer)
+    tag = db.Column(db.String(20))
+    type = db.Column(db.String(20))
     answer = db.relationship('answer', backref='question', lazy='dynamic')
 
     def __repr__(self):
-        return '<questions {}>'.format(self.body)
+        return '<questions {}>'.format(self.content)
 
 
 class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id=db.Column(db.Integer, db.ForeignKey('questions.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    content = db.Column(db.String(500), unique=True)    
+    content = db.Column(db.String(500), unique=True)
+    mark = db.Column(db.Integer, default=-1)
     def __repr__(self):
-        return '<answer {}>'.format(self.body)
+        return '<answer {}>'.format(self.content)
        
+
+#(content="HTML stands for?\nA. Hyper Text Markup Language\nB. High Text Markup Language\nC. Hyper Tabular Markup Language\nD. None of these",stand_answer="A",tag="example")
+#(content="which of the following tag is used to mark a begining of paragraph ?A.<TD >\nB.<br >\nC.<P >\nD.<TR > ", stand_answer="C",tag="example")
+# db.session.add(questions(content="HTML stands for?\nA. Hyper Text Markup Language\nB. High Text Markup Language\nC. Hyper Tabular Markup Language\nD. None of these",stand_answer="A",tag="example"))
+# db.session.add(questions(content="which of the following tag is used to mark a begining of paragraph ?A.<TD >\nB.<br >\nC.<P >\nD.<TR > ", stand_answer="C",tag="example"))
