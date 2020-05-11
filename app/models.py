@@ -2,7 +2,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
-# from hashlib import md5
+from hashlib import md5
 from app import db
 
 #the tables of sql and related caculations are wirtten here
@@ -37,15 +37,15 @@ def load_user(id):
 
 class questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(500), unique=True)
-    stand_answer = db.Column(db.String(500), unique=True)
+    content = db.Column(db.String(500))
+    stand_answer = db.Column(db.String(500))
     mark = db.Column(db.Integer)
     tag = db.Column(db.String(20))
     type = db.Column(db.String(20))
     answer = db.relationship('answer', backref='question', lazy='dynamic')
 
     def __repr__(self):
-        return '<questions {}>'.format(self.content)
+        return '<"questions": {},'.format(self.content)+'"tag": {}'.format(self.tag)+">"
 
 
 class answer(db.Model):
