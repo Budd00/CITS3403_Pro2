@@ -1,67 +1,47 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Candidate log in</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/login_css.css" type="text/css">
-  </head>
-  <body>
-    <div class="log">
-      <h3 style="color: #FFFFFFFF">Log in</h3>
-    </div><br><br><br>
+{% extends "UserBase.html" %}
 
-    <h3>Please fill your personal information:</h3><br>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
+{% block content %}
 
-    <div class="content">
-    <!-- login block -->
-    <form action = '' method="POST">
-        {{ form.hidden_tag() }}
-        <div class="container">
-        <p>
+<h3>Please fill your personal information:</h3><br>
+<div class="content">
+  <!-- login block -->
+  <form action='' method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+      <p>
         <!-- username -->
-            {{ form.username.label }}<br>
-            {{ form.username(size = 60, placeholder = "Username") }}
-            {% for error in form.username.errors %}
-            <span style="color: red;">[ {{ error}} ]</span>
-            {% endfor %}
-        </p>
-        <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size = 60, placeholder = "Username") }}
+        {% for error in form.username.errors %}
+        <span style="color: red;">[ {{ error}} ]</span>
+        {% endfor %}
+      </p>
+      <p>
         <!-- password-->
-            {{ form.password.label }}<br>
-            {{ form.password(size = 60, placeholder = "Password") }}
-            {% for error in form.password.errors %}
-            <span style="color: red;">[ {{ error}} ]</span>
-            {% endfor %}
-        </p>
-        <p>
-            <!-- remember me -->
-            {{ form.remember_me() }}
-            {{ form.remember_me.label }}
-        </p>
-        <!-- submit button -->
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Sign in</button>
-          </div>
-        </div>
-        <!-- redirect for register -->
-        <p><a href="{{ url_for('register') }}">Click to Register</a></p>
+        {{ form.password.label }}<br>
+        {{ form.password(size = 60, placeholder = "Password") }}
+        {% for error in form.password.errors %}
+        <span style="color: red;">[ {{ error}} ]</span>
+        {% endfor %}
+      </p>
+      <p>
+        <!-- remember me -->
+        {{ form.remember_me() }}
+        {{ form.remember_me.label }}
+      </p>
+      <!-- submit button -->
+      <div class="form-group" style ="text-align: center;">
+          <button type="submit" class="btn" style="background-color: white;">Sign in</button>
+      </div>
+      <!-- redirect for register -->
+      <p><a href="{{ url_for('register') }}">Click to Register</a></p>
     </div>
-    </form>
-  </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<br>
+<br>
+
+{% endblock %}
+

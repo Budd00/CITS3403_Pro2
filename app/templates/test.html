@@ -1,12 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-</head>
-<body>
-    <h1>Dear {{ current_user.username }}:</h1>
-    <p>Hear is your test</p>
-</body>
-</html>
+{% extends "Userbase.html" %}
+
+{% block content %}
+<style type="text/css">
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        margin: 0 100px;
+    }
+
+    button {
+        margin: 0 auto;
+        display: block;
+        color: white;
+        background-color: cornflowerblue;
+        font-size: 20px;
+        border-radius: 15px;
+    }
+</style>
+<!-- overall title -->
+<h1 class="Title">
+    Welcome to take quiz!
+</h1>
+<h2>
+    Here're your questions:
+</h2>
+
+<!-- block to contain all the questions -->
+<div>
+
+</div>
+
+
+<button type="button">Submit!</button>
+
+
+{% endblock %}
+
