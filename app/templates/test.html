@@ -1,45 +1,86 @@
 {% extends "Userbase.html" %}
 
 {% block content %}
-<style type="text/css">
+
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    }
+
     h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 30px;
+    }
+
+    
+    .container {
+    width: 100%;
+    margin: 0 auto;
+    animation: question 2.1s;   
+    }
+
+    @keyframes question {
+    from {
+    opacity: 0;
+    transform: translate3d(0,8%,0)
+    }
+    to {
+    opacity: 1;
+    transform: none;
+    }
+    }
+
+                
+    .container .content .title {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    }
+
+    .container .content .subtitle {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: darkgrey;
+    }
+
+    .container .content hr {
+    border: 0;
+    height: 1px;
+    background-color: lightblue;
+    }
+
+    .container .content .questions{           
+        margin: 0 auto;
+        margin-top: 40px;
         text-align: center;
     }
-
-    h2 {
-        margin: 0 100px;
+    .container .content .questions .tag{
+        font-size: 16px;      
     }
+    </style>
+</head>
+<body>
+<div class="container">
 
-    button {
-        margin: 0 auto;
-        display: block;
-        color: white;
-        background-color: cornflowerblue;
-        font-size: 20px;
-        border-radius: 15px;
-    }
-</style>
-<!-- overall title -->
-<h1 class="Title">
-    Welcome to take quiz!
-</h1>
-<h2>
-    Here're your questions:
-</h2>
-
-
+<div class="content">
+<h1 class="title">Welcome to take quiz!</h1>
+<p class="subtitle">Here're your questions:</p>
+<hr>
+<div class="questions" >
 <form action="" method="post">
     {{ form.hidden_tag() }}
+    <P class="tag">{{ form.tag.label }}:  {{ form.tag }}</P>
     <p>
-        {{ form.tag.label }}
+        
     </p>
-    <p>
-        {{ form.tag }}
-    </p>
-    <p>{{ form.submit() }}</p>
+    <p class="a2">{{ form.submit(class_='btn btn-success') }}</p>
 </form>
-
-
+</div>
+</div>
+</div>
 
 
 
