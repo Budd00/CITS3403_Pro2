@@ -1,10 +1,9 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory
 from flask_login import logout_user, login_user, current_user, login_required
-from app.models import User
-from app import app,db
-from app.Form import LoginForm, RegistrationForm
+from app.models import User, questions
+from app import app, db, controller
+from app.Form import LoginForm, RegistrationForm, TagForm, AnswerForm
 from werkzeug.urls import url_parse
-
 
 
 # app = Flask(__name__)
@@ -14,11 +13,12 @@ app.secret_key = 'SECRET KEY'
 def index():
     return render_template('Application.html')
 
-@app.route('/Login', methods = ['POST','GET'])
+
+@app.route('/Login', methods=['POST', 'GET'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('get_test'))
-    form = LoginForm()  
+    form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
@@ -31,9 +31,7 @@ def login():
         return redirect(next_page)
     return render_template('Can_log.html', title='Sign In', form=form)
 
-
-
-@app.route('/adminLogin', methods = ['GET','POST'])
+@app.route('/adminLogin', methods=['GET', 'POST'])
 def adminLogin():
     form = LoginForm()
     return render_template('Admin_log.html')
@@ -59,10 +57,35 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/test', methods=['GET', 'POST'])
 @login_required
 def get_test():
-    return render_template('test.html',title='test')
+    tags = controller.get_tags()
+    print('tags are: ', tags)
+    form = TagForm()
+    tagvalue = None
+    if form.validate_on_submit():
+        tagvalue = form.tag.data
+        return redirect(url_for('Que',tag=tagvalue, index="0"))
+    return render_template('test.html', title='test', form=form)
+
+
+@app.route('/questions?tag=<tag>&index=<index>', methods=['GET', 'POST'])
+@login_required
+def Que(tag,index):
+    index=int(index)
+    form = AnswerForm()
+    ques = controller.get_questions(tag)
+    limit=len(ques)
+    que=ques[index]
+    if index<limit-1:
+        index += 1
+        if form.validate_on_submit():
+            answer = form.answer.data
+            return redirect(url_for('Que', tag=tag, index=str(index)))       
+    return render_template('Questions.html', title='Questions', form=form,question=que)
+    
 
 
 @app.route('/welcome', methods=['GET', 'POST'])
