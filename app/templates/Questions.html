@@ -1,0 +1,23 @@
+
+{% extends "Userbase.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% for i in question %}
+    <p>{{i}}</p>
+    {% endfor %}
+</div>
+
+<div class="container">
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.answer(size=500) }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</div>
+
+{% endblock %}

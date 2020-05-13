@@ -27,14 +27,20 @@
     Here're your questions:
 </h2>
 
-<!-- block to contain all the questions -->
-<div>
 
-</div>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.tag.label }}
+    </p>
+    <p>
+        {{ form.tag }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
 
 
-<button type="button">Submit!</button>
+
 
 
 {% endblock %}
-
