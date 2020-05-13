@@ -1,0 +1,44 @@
+{% extends "UserBase.html" %}
+
+{% block content %}
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(130deg,grey,lightpink,pink,lightblue,red);
+            background-size: 400%;
+            animation: colorchange 15s infinite;
+            }
+
+        .text{
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 310px 0;
+        font-size: 22px;
+        font: italic 1em Georgia, serif; 
+        }
+
+        @keyframes colorchange {
+        0%{
+            background-position: 0% 50%;
+        }
+        50%{
+            background-position: 100% 50%;
+        }
+        100%{
+            background-position: 0% 50%;
+        }
+        }
+
+    </style>
+</head>
+
+<div class="text">
+    <h1><b>congratulation!</b></h1>
+    <p>You have submitted successfully...</p>
+    <p><a href="welcome">Back to the main screen</a></p>    
+</div>
+    
+
+{% endblock %}
