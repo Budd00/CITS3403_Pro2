@@ -3,31 +3,36 @@
 
 {% block content %}
 
-<div class="container">
+<style>
+    .container{
+       margin-top: 50px;
+        text-align: center;
+
+    }
+    .answerTable{
+        font-size: 20px;
+        width: 500px;
+        height: 300px;
+        resize: none;
+        
+    }
+</style>
+
+<div class="container" >
     {% for i in question %}
-    <p>{{i}}</p>
+    <p style="font-size: 20px;">{{i}}</p>
     {% endfor %}
 </div>
 
 <div class="container">
 
-    <form action="" method="post">
+    <form action="" method="post" >
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.answer(size=500) }}<br>
+        <p >
+            {{ form.answer(size=600,class_='answerTable')}}<br> <hr>
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(class_='btn btn-success') }}</p>
     </form>
 </div>
-
-{% if limit and nextindex!="1" %}
-<a href="{{url_for('Que', tag=tag, index=lastindex) }}">last</a>
-<a href="{{url_for('Que', tag=tag, index=nextindex) }}">next</a>
-{% elif limit %}
-<a href="{{url_for('Que', tag=tag, index=nextindex) }}">next</a>
-{% else %}
-<a href="{{url_for('Que', tag=tag, index=lastindex) }}">last</a>
-<a href="{{url_for('ending')}}">End</a>
-{% endif%}
 
 {% endblock %}
