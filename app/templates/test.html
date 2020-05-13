@@ -46,10 +46,18 @@
     color: darkgrey;
     }
 
+    .aaa{
+        width: 200px;
+        height: 30px;
+    }
+
+    span{
+        color:rgb(43, 54, 58);
+    }
     .container .content hr {
     border: 0;
     height: 1px;
-    background-color: lightblue;
+    background-color:lightgray;
     }
 
     .container .content .questions{           
@@ -67,12 +75,12 @@
 
 <div class="content">
 <h1 class="title">Welcome to take quiz!</h1>
-<p class="subtitle">Here're your questions:</p>
+<p class="subtitle">Choose your question set:</p>
 <hr>
 <div class="questions" >
 <form action="" method="post">
     {{ form.hidden_tag() }}
-    <P class="tag">{{ form.tag.label }}:  {{ form.tag }}</P>
+    <P class="tag"><span>Question set:</span> &nbsp&nbsp&nbsp  {{ form.tag(class_="aaa") }}</P>
     <p>
         
     </p>
