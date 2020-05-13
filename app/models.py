@@ -52,7 +52,7 @@ class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id=db.Column(db.Integer, db.ForeignKey('questions.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    content = db.Column(db.String(500), unique=True)
+    content = db.Column(db.String(500))
     mark = db.Column(db.Integer, default=-1)
     def __repr__(self):
         return '<answer {}>'.format(self.content)
