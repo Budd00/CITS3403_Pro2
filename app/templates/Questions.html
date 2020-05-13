@@ -20,4 +20,14 @@
     </form>
 </div>
 
+{% if limit and nextindex!="1" %}
+<a href="{{url_for('Que', tag=tag, index=lastindex) }}">last</a>
+<a href="{{url_for('Que', tag=tag, index=nextindex) }}">next</a>
+{% elif limit %}
+<a href="{{url_for('Que', tag=tag, index=nextindex) }}">next</a>
+{% else %}
+<a href="{{url_for('Que', tag=tag, index=lastindex) }}">last</a>
+<a href="{{url_for('ending')}}">End</a>
+{% endif%}
+
 {% endblock %}
