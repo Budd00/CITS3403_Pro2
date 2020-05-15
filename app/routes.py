@@ -28,6 +28,8 @@ def login():
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('welcome')
+        if user.Is_adm ==1:
+            next_page = url_for('adminLogin')
         return redirect(next_page)
     return render_template('Can_log.html', title='Sign In', form=form)
 
@@ -108,7 +110,15 @@ def welcome():
 @app.route('/mark', methods=['GET', 'POST'])
 @login_required
 def mark():
-    return render_template('mark.html', title='mark')
+    form = TagForm()
+    mark=[(0,0)]
+    mark_sum=0
+    weight_sum=0
+    if form.validate_on_submit():
+        mark, mark_sum = controller.get_mark(form.tag.data, current_user.get_id())
+        weight, weight_sum = controller.get_question_mark(form.tag.data)
+        mark=zip(mark,weight)
+    return render_template('mark.html', title='mark',form=form,marks=mark,mark_sum=mark_sum,weight_sum=weight_sum)
 
 
 @app.route('/ending', methods=['GET', 'POST'])
