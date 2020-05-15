@@ -25,6 +25,9 @@
                     <li><a href="{{ url_for('welcome') }}">Home</a></li>
                     {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('login') }}">Login</a></li>
+                    {% elif current_user.if_adm() %}
+                    <li><a href="{{ url_for('adminLogin') }}">Adm</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     {% else %}
                     <li><a href="{{ url_for('get_test') }}">Quiz</a></li>
                     <li><a href="{{ url_for('mark') }}">Result</a></li>
