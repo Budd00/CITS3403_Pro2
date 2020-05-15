@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, IntegerField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo,InputRequired
 from app.models import User
 from app import controller
 
@@ -35,6 +35,18 @@ class AnswerForm(FlaskForm):
     answer = TextAreaField('answer', validators=[DataRequired()])
     submit = SubmitField('Save')
 
-class TagForm(FlaskForm):
-    tag = SelectField(validators=[DataRequired('Please select a tag')], choices=controller.get_tags())
-    submit = SubmitField('get quiz')
+# class TagForm(FlaskForm):
+#     tag = SelectField(validators=[DataRequired('Please select a tag')], choices=controller.get_tags())
+#     submit = SubmitField('get quiz')
+
+class QuestionForm( FlaskForm ):
+    Tag = StringField('Tag', validators=[DataRequired()])
+    Mark = IntegerField('Mark', validators=[DataRequired()])
+    Que = TextAreaField('Question', validators=[DataRequired()])
+    Stand_answer = TextAreaField('Stand_answer')
+    submit = SubmitField('Submit')
+
+class MarkForm( FlaskForm ):
+    Mark = IntegerField('Mark', validators=[InputRequired()])
+    submit = SubmitField('Submit')
+
