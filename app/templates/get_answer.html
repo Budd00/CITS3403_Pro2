@@ -1,0 +1,49 @@
+{% extends "Userbase.html" %}
+
+{% block content %}
+<style type="text/css">
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        margin: 0 100px;
+    }
+
+    button {
+        margin: 0 auto;
+        display: block;
+        color: white;
+        background-color: cornflowerblue;
+        font-size: 20px;
+        border-radius: 15px;
+    }
+</style>
+<!-- overall title -->
+<h1 class="Title">
+   Choose tag and user
+</h1>
+
+<div>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+    <p>
+        {{ form.tag.label }} 
+    </p>
+    <p>
+        {{ form.tag }}
+    </p>
+    <p>
+        {{ form.user.label }}
+    </p>
+    <p>
+        {{ form.user }}
+    </p>
+    <p>{{ form.submit() }}</p>
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

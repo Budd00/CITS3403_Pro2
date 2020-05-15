@@ -5,7 +5,7 @@
         body{
             margin: 0;
             padding: 0;
-            background-image: linear-gradient(130deg,grey,lightblue,lightpink,lightblue,red);
+            background-image: linear-gradient(130deg,grey,lightpink,pink,lightblue,red);
             background-size: 400%;
             animation: colorchange 15s infinite;
             }
@@ -37,7 +37,11 @@
 <div class="text">
     <h1><b>congratulation!</b></h1>
     <p>You have submitted successfully...</p>
-    <p><a href="welcome">Back to the main screen</a></p>    
+    {% if current_user.if_adm() %}
+    <p><a href="AdminWelcome">Back to the main screen</a></p>
+    {%　else %}
+    <p><a href="welcome">Back to the main screen</a></p>   
+    {% endif %} 
 </div>
     
 

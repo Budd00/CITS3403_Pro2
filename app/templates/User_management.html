@@ -1,0 +1,31 @@
+{% extends "UserBase.html" %}
+
+{% block content %}
+<title>User Manager</title>
+<h1>User Manager</h1>
+<hr>
+<table border="1px">
+<tr>
+    <th>User ID</th>
+    <th>User Name</th>
+    <th>Administrator or not</th>
+    <th>Delete User</th>
+    <th>Let user become Admin</th>
+    <th></th>
+</tr>
+{% for User in Users_list %}
+<tr>
+    <td>{{ User.get_id() }}</td>
+    <td>{{ User.get_user_name()}}</td>
+    <td>{{ User.if_adm() }} </td>
+    <td>
+        <a href="{{ url_for('delete_user', user_id=User.get_id()) }}">Delete</a>
+    </td>
+    <td>
+        <a href="{{ url_for('make_admin', user_id=User.get_id()) }}"> Admin</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+<a href="{{ url_for('register') }}">Add</a><br>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "Userbase.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div>
+        <p>
+            {{ form.Tag.label }}
+        </p>
+        <p>
+            {{ form.Tag(size=10) }}<br>
+        </p>
+        <p>
+            {{ form.Que.label }}
+        </p>
+       <p>
+            {{ form.Que(size=500) }}<br>
+        </p>
+        <p>
+            {{ form.Mark.label }}
+        </p>
+        <p>
+            {{ form.Mark(size=10) }}<br>
+        </p>
+        <p>
+            {{ form.Stand_answer.label }}
+        </p>
+        <p>
+            {{ form.Stand_answer(size=500) }}
+        </p>
+        <p>if there is no stand answer, please do not enter anything </p>
+        <p>{{ form.submit() }}</p>
+        </div>
+    </form>
+    
+    <p><a href="{{ url_for('Upload_question') }}">Upload another question</a></p>
+    <p><a href="{{ url_for('AdminWelcome') }}">End</a></p>
+</div>
+
+
+
+<br>
+
+{% endblock %}

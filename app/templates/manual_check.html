@@ -1,0 +1,45 @@
+{% extends "Userbase.html" %}
+
+{% block content %}
+<p>{{ nextindex }} </p>
+<div class="container">
+<div>
+    {% for i in question %}
+    <p>{{i}}</p>
+    {% endfor %}
+</div>
+
+<p>{{ user_id }}'s answer</p>
+<div class="container">
+    {% for j in answer %}
+    <p>{{ j }}</p>
+    {% endfor %}
+</div>
+
+<div class="container">
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.Mark(size=5) }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</div>
+
+{% if limit and nextindex!="1" %}
+<a href="{{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}">last</a>
+<a href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next</a>
+{% elif limit %}
+<a href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next</a>
+{% elif nextindex!="1" %}
+<a href="{{url_for('manual_check',user_id = user_id, tag=tag, index=lastindex) }}">last</a>
+<a href="{{url_for('ending')}}">End</a>
+{% else %}
+<a href="{{url_for('ending')}}">End</a>
+{% endif%}
+
+</div>
+
+<br>
+<br>
+{% endblock %}
