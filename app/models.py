@@ -27,6 +27,9 @@ class User(UserMixin,db.Model):
 
     def get_id(self):
         return self.id
+
+    def get_user_name(self):
+        return self.username
     
     def if_adm(self):
         return self.Is_adm
@@ -49,6 +52,10 @@ class questions(db.Model):
 
     def __repr__(self):
         return '<"questions": {},'.format(self.content)+'"tag": {}'.format(self.tag)+">"
+
+    def get_id(self):
+        return self.id
+    
 
 
 class answer(db.Model):
