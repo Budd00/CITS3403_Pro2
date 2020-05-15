@@ -28,6 +28,9 @@ class User(UserMixin,db.Model):
     def get_id(self):
         return self.id
     
+    def if_adm(self):
+        return self.Is_adm
+    
 
 
 @login.user_loader
