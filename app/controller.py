@@ -60,7 +60,7 @@ def auto_check(answer, que_id):
           std_mark, 'type of mark: ', type(std_mark))
     final_mark = 0
     # if there isn't a standard mark
-    if std_mark == None:
+    if std_ans == '':
         final_mark = -1
     # if the answer is correct
     elif std_ans == answer:
@@ -79,7 +79,7 @@ def get_mark(tag, uid):
     arr = []
     for row in c:
         if row[0] == -1:
-            return 'Assesment is not finished yet!',0
+            return 'Assesment is not finished yet!',-1
         arr.append(row[0])
     return arr,sum(arr)
 
@@ -95,3 +95,39 @@ def get_question_mark(tag):
         arr.append(row[0])
     return arr,sum(arr)
 
+
+def delete_user(user_id):
+    conn = sqlite3.connect('app.db')
+    print('opened database successfully')
+    c = conn.cursor()
+    sql_query = "DELETE FROM User where id = " + str(user_id)
+    c.execute(sql_query)
+    conn.commit()
+    sql_query = "DELETE FROM answer where user_id = " + str(user_id)
+    c.execute(sql_query)
+    conn.commit()
+    print('successfully deleted')
+
+
+def make_admin(user_id):
+    conn = sqlite3.connect('app.db')
+    print('opened database successfully')
+    c = conn.cursor()
+    sql_query = "UPDATE User SET Is_adm = 1 WHERE id = " + str(user_id)
+    c.execute(sql_query)
+    conn.commit()
+    print('updated successfully')
+
+
+def get_answer(qid, uid):
+    conn = sqlite3.connect('app.db')
+    print('opened database successfully')
+    c = conn.cursor()
+    sql_query = "SELECT content FROM answer where question_id = " + \
+        str(qid) + " and user_id = " + str(uid)
+    c.execute(sql_query)
+    answers = []
+    for row in c:
+        answers.append(row[0])
+    answers=answers[0].split("\n")
+    return answers
