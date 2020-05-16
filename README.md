@@ -35,6 +35,7 @@ Download chromedriver from https://chromedriver.chromium.org/
 Changing app.config.from_object(Config) to app.config.from_object(ConfigTest)
 
 python -m test.unit
+
 python -m test.test
 
 
