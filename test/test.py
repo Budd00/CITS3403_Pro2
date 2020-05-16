@@ -34,7 +34,8 @@ class FlaskTestCase(unittest.TestCase):
             db.session.commit()
             db.session.remove()
 
-    def test_login(self):
+
+    def test_correct_login(self):
         self.driver.get('http://127.0.0.1:5000/Login')
         time.sleep(1)
         user_field = self.driver.find_element_by_id('username')
@@ -49,13 +50,49 @@ class FlaskTestCase(unittest.TestCase):
         welcome = self.driver.find_element_by_class_name('welcome').get_attribute('innerHTML')
         self.assertIn("What's up, username", welcome)
 
+    def test_incorrect_login(self):
+        self.driver.get('http://127.0.0.1:5000/Login')
+        time.sleep(1)
+        user_field = self.driver.find_element_by_id('username')
+        password_field = self.driver.find_element_by_id('password')
+        submit = self.driver.find_element_by_id('submit')
+
+        user_field.send_keys('user')
+        password_field.send_keys('pass')
+        submit.click()
+        time.sleep(1)
+
+        flashed = self.driver.find_element_by_id('get_flashed').get_attribute('innerHTML')
+        self.assertIn('Invalid username or password', flashed)
+
+
     def test_logout(self):
-        self.test_login()
+        self.test_correct_login()
         logout = self.driver.find_element_by_partial_link_text('Logout')
         logout.click()
 
         text = self.driver.find_element_by_id('info').get_attribute('innerHTML')
         self.assertIn('Welcome to quiz page', text)
+
+    def test_register(self):
+        self.driver.get('http://127.0.0.1:5000/register')
+        time.sleep(1)
+        user_field = self.driver.find_element_by_id('username')
+        email_field = self.driver.find_element_by_id('email')
+        password_field = self.driver.find_element_by_id('password')
+        confirm_field = self.driver.find_element_by_id('password2')
+        submit = self.driver.find_element_by_id('submit')
+
+        user_field.send_keys('username2')
+        email_field.send_keys('user@name2.com')
+        password_field.send_keys('password2')
+        confirm_field.send_keys('password2')
+        submit.click()
+        time.sleep(1)
+
+        label = self.driver.find_element_by_id('label').get_attribute('innerHTML')
+        self.assertIn('Please fill your personal information:', label)
+
 
 
 if __name__ == '__main__':
