@@ -7,8 +7,6 @@ class UserModelTest(unittest.TestCase):
 
     def setUp(self):
         self.app = app.test_client()
-        # make sure database is empty
-        #db.session.query(User).delete()
         db.create_all()
         u = User(id=1, username='username', email='user@name.com')
         db.session.add(u)
