@@ -1,8 +1,8 @@
 # CITS3403_Pro2
 
-#Multi-user quiz application allow administrators to set question sets, users to submit answers to the questions, and manual or automatic assessment of those answers.
+Multi-user quiz application allow administrators to set question sets, users to submit answers to the questions, and manual or automatic assessment of those answers.
 
-##Dependency
+## Dependency
 
 Dependencies needed for running the system:
 
@@ -20,13 +20,13 @@ flask-wtf
 
 Selenium
 
-#Running System
+## Running System
 
 flask run
 
 The system will be running on http://localhost:5000
 
-#Running Unittest 
+## Running Unittest 
 
 Before running Unittest, you have to download chromedrive and change setting in app/__init__.py.
 
