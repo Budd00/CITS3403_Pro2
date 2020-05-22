@@ -13,11 +13,12 @@
       background-color: #0B0B0BFF;
 
     }
+ 
 
     body {
       margin-bottom: 60px;
+      background: aqua;
       font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, simsun, sans-serif;
-      background-color:gray;
       -webkit-background-size: 100% 100%;
       -moz-background-size: 100% 100%;
       -o-background-size: 100% 100%;
@@ -25,16 +26,18 @@
     }
 
   </style>
-  <div class="whole">
-    <div class="welcome" style="color: #FFFFFFFF;">
-      <h2 id = "info">Welcome to quiz page</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias corrupti ex minima. Suscipit itaque qui nemo architecto ipsa quis, officiis quibusdam tenetur beatae minima incidunt error voluptate, cupiditate rem eius!</p>
+
+    <div class="whole">
+      <div class="welcome" style="color: #FFFFFFFF;">
+        <h2 id = "info">Welcome to quiz page</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias corrupti ex minima. Suscipit itaque qui nemo architecto ipsa quis, officiis quibusdam tenetur beatae minima incidunt error voluptate, cupiditate rem eius!</p>
+      </div>
+      <br><br>
+      <div class="btn btn-block">
+        <button type="button" class="btn btn-warning"> <a href="{{ url_for('register') }}">Register now</a></button>
+      </div>
     </div>
-    <br><br>
-    <div class="btn btn-block">
-      <button type="button" class="btn btn-warning"> <a href="{{ url_for('register') }}">Register now</a></button>
-    </div>
-  </div>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>

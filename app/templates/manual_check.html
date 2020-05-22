@@ -1,16 +1,79 @@
 {% extends "Userbase.html" %}
 
 {% block content %}
-<p>{{ nextindex }} </p>
-<div class="container">
-<div>
-    {% for i in question %}
-    <p>{{i}}</p>
+
+<style>
+    .num{
+        position: relative;
+        right: 195px;
+        top: 38px;
+        font-size: 18px;
+        
+    }
+
+    .container{
+       margin-top: 50px;
+        text-align: center;
+
+    }
+    .answerTable{
+        font-size: 20px;
+        width: 400px;
+        height: 200px;
+        resize: none;       
+    }
+    .btn2{
+        font-size: 16px;
+        background-color:green;
+    }
+    .aaa{
+        position: relative;
+        top:3px
+    }
+    .bbb{
+        position: relative;
+        top:4px;
+        left: 2px;
+    }
+    .next{
+        position: relative;
+        left: 80px;
+        bottom: 50px;
+        font-size: 25px;
+        margin-left: 48%;
+    }
+    .last{
+        position: relative;
+        left: -80px;
+        bottom: 50px;
+        font-size: 25px;
+        margin-left: 48%;
+    }
+    .end{
+        position: relative;
+        left: 80px;
+        bottom:84px;
+        font-size: 25px;
+        margin-left: 48%;
+    }
+  
+ 
+</style>
+
+
+<div class="container" >
+    <p class="num"><b>{{ nextindex }}:</b></p>
+    <p>{% for i in question %}</p>
+    <p style="font-size: 20px;">{{i}}</p>
     {% endfor %}
 </div>
 
-<p>{{ user_id }}'s answer</p>
+
+
+
+
 <div class="container">
+    <p>{{ user_id }}'s answer</p>
     {% for j in answer %}
     <p>{{ j }}</p>
     {% endfor %}
@@ -20,25 +83,24 @@
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
-            {{ form.Mark(size=5) }}<br>
+            {{ form.Mark(size=5,class_="answerTable") }}<br>
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(class_="btn btn-success btn2") }}</p>
     </form>
 </div>
 
-{% if limit and nextindex!="1" %}
-<a href="{{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}">last</a>
-<a href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next</a>
-{% elif limit %}
-<a href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next</a>
-{% elif nextindex!="1" %}
-<a href="{{url_for('manual_check',user_id = user_id, tag=tag, index=lastindex) }}">last</a>
-<a href="{{url_for('ending')}}">End</a>
-{% else %}
-<a href="{{url_for('ending')}}">End</a>
-{% endif%}
 
-</div>
+{% if limit and nextindex!="1" %}
+<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><div class="glyphicon glyphicon-chevron-left aaa"></div>last</a>
+<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<div class="glyphicon glyphicon-chevron-right aaa"></div></a>
+{% elif limit %}
+<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<div class="glyphicon glyphicon-chevron-right aaa"></div></a>
+{% elif nextindex!="1" %}
+<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><div class="glyphicon glyphicon-chevron-left aaa"></div>last</a>
+<a class="end" href="{{url_for('ending')}}">End<div class="glyphicon glyphicon-info-sign bbb"></div></a>
+{% else %}
+<a href="{{url_for('ending')}}">End</a >
+{% endif%}
 
 <br>
 <br>

@@ -1,49 +1,61 @@
 {% extends "Userbase.html" %}
 
 {% block content %}
-<style type="text/css">
-    h1 {
-        text-align: center;
-    }
 
-    h2 {
-        margin: 0 100px;
-    }
 
-    button {
-        margin: 0 auto;
-        display: block;
+<style>
+    .subject{margin:0 auto;width:290px; margin-top: 50px;  }
+    .whichone{margin:0 auto;width:290px; margin-top: 100px;}
+    .title{text-align: center; margin-top: 100px; margin-left: -60px; color:darkturquoise;}
+    .button1 {
+        margin-top: 40px;
+        margin-left: 40px;
+        width: 100px; 
+        height: 30px; 
+        border-width: 0px; 
+        background: rgb(24, 138, 252); 
+        cursor: pointer;  
         color: white;
-        background-color: cornflowerblue;
-        font-size: 20px;
-        border-radius: 15px;
+        font-size: 17px; 
+        border-radius: 10px;
+     }
+    .button1:hover{
+        background: #5599FF;
+     }
+    body{color:slategrey;background-color:whitesmoke;}
+    .inputInGetAnswer{
+        width:200px;
+        height:40px;
+        font-size:20px;
     }
-</style>
-<!-- overall title -->
-<h1 class="Title">
-   Choose tag and user
-</h1>
 
-<div>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <div>
-    <p>
-        {{ form.tag.label }} 
-    </p>
-    <p>
-        {{ form.tag }}
-    </p>
-    <p>
-        {{ form.user.label }}
-    </p>
-    <p>
-        {{ form.user }}
-    </p>
-    <p>{{ form.submit() }}</p>
-    </div>
+   
+</style>
+    <form action="" method="post">
+        <div class="title">
+            <h1>CHOOSE TAG AND USER</h1>
+        </div>
+        <div class="subject">
+        <h4>Choose your exam's type:</h4>
+        {{ form.tag(class_="inputInGetAnswer") }}  
+        </div>
+        <div class="whichone" >   
+            <h4>Choose user:</h4> 
+            {{ form.user(class_="inputInGetAnswer") }}
+            <p>{{ form.submit(class_="button1") }}</p>
+        </div>
 </form>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}
