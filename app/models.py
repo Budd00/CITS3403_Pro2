@@ -56,7 +56,16 @@ class questions(db.Model):
     def get_id(self):
         return self.id
     
+    def get_content(self):
+        return self.content
+    
+    def get_set(self):
+        return self.tag
+    
+    def get_answer(self):
+        return self.stand_answer
 
+    
 
 class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)

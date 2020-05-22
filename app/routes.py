@@ -113,14 +113,15 @@ def Que(tag,index):
         db.session.commit()
            
     return render_template('Questions.html', title='Questions', form=form,question=que,tag=tag, nextindex=str(index+1),lastindex=str(index-1),limit=limit)
-    
+
+
+
 
 @app.route('/mark', methods=['GET', 'POST'])
 @login_required
 def mark():
     class TagForm(FlaskForm):
         pass
-
     setattr(TagForm, 'tag', SelectField(validators=[
             DataRequired('Please select a tag')], choices=controller.get_tags()))
     setattr(TagForm, 'submit', SubmitField('get quiz'))
@@ -235,6 +236,28 @@ def get_answer():
         
 
     return render_template('get_answer.html', title='get_answer', form=form)
+
+
+@app.route('/manage_que', methods=['GET', 'POST'])
+@login_required
+def manage_que():
+    if current_user.if_adm() != 1:
+        return redirect(url_for('welcome'))
+    quelist = questions.query.all()
+    return render_template('manage_que.html', title='Manage questions',que_list=quelist)
+
+
+@app.route('/delete_que?que_id=<que_id>', methods=['GET', 'POST'])
+@login_required 
+def delete_que(que_id):
+    if current_user.if_adm() != 1:
+        return redirect(url_for('welcome'))
+    mod = questions.query.filter_by(id=que_id).first()
+    db.session.delete(mod)
+    db.session.commit()
+    flash("Question"+str(que_id) + " has been deleted!")
+    return redirect(url_for('manage_que'))
+
 
 @app.route('/ending', methods=['GET', 'POST'])
 @login_required
