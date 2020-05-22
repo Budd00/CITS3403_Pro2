@@ -28,6 +28,7 @@
                     {% elif current_user.if_adm() %}
                     <li><a href="{{ url_for('AdminWelcome') }}">Home</a></li>
                     <li><a href="{{ url_for('Upload_question') }}">Upload Questions</a></li>
+                    <li><a href="{{ url_for('manage_que') }}">Delete Questions</a></li>
                     <li><a href="{{ url_for('get_answer') }}">Mark</a></li>
                     <li><a href="{{ url_for('User_management') }}">User management</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
