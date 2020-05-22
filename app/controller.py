@@ -129,5 +129,8 @@ def get_answer(qid, uid):
     answers = []
     for row in c:
         answers.append(row[0])
-    answers=answers[0].split("\n")
+    if answers!=[]:
+        answers=answers[0].split("\n")
+    else:
+        answers=["There is no answer!"]
     return answers
