@@ -24,6 +24,7 @@
         width:100%; 
         height: 50px; 
         margin-top:10px;
+        font-size: 12px;
       }
       .input3{
         width:100%; 
@@ -100,12 +101,12 @@
 
         {{ form.Tag(size=10,placeholder="TAG",class_="input") }}
         {{ form.Mark(size=10,placeholder="MARK",class_="input") }}
-        {{ form.Que(size=10,placeholder="QUESTION",class_="input2") }}
+        {{ form.Que(size=10,placeholder="STAND ANSWER(if there is no stand answer, please do not enter anything!)",class_="input2") }}
       </fieldset>
       <!-- input context -->
       <fieldset>
-        <p>Stand answer:</p>
-        {{ form.Stand_answer(size=500,placeholder="upload hour answer here...(if there is no stand answer, please do not enter anything!)",class_="input3") }}
+        <p>QUESTION:</p>
+        {{ form.Stand_answer(size=500,placeholder="upload hour questions here ...",class_="input3") }}
       </fieldset>
       <fieldset>
         {{ form.submit(class_="button") }}
