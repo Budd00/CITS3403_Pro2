@@ -7,6 +7,7 @@ from app import db
 
 #the tables of sql and related caculations are wirtten here
 
+# User table
 class User(UserMixin,db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -34,13 +35,11 @@ class User(UserMixin,db.Model):
     def if_adm(self):
         return self.Is_adm
     
-
-
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
     
-
+# question table
 class questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(500))
@@ -65,8 +64,8 @@ class questions(db.Model):
     def get_answer(self):
         return self.stand_answer
 
-    
 
+# answer table
 class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id=db.Column(db.Integer, db.ForeignKey('questions.id'))
@@ -76,8 +75,3 @@ class answer(db.Model):
     def __repr__(self):
         return '<answer {}>'.format(self.content)
        
-
-#(content="HTML stands for?\nA. Hyper Text Markup Language\nB. High Text Markup Language\nC. Hyper Tabular Markup Language\nD. None of these",stand_answer="A",tag="example")
-#(content="which of the following tag is used to mark a begining of paragraph ?A.<TD >\nB.<br >\nC.<P >\nD.<TR > ", stand_answer="C",tag="example")
-# db.session.add(questions(content="HTML stands for?\nA. Hyper Text Markup Language\nB. High Text Markup Language\nC. Hyper Tabular Markup Language\nD. None of these",stand_answer="A",tag="example"))
-# db.session.add(questions(content="which of the following tag is used to mark a begining of paragraph ?A.<TD >\nB.<br >\nC.<P >\nD.<TR > ", stand_answer="C",tag="example"))

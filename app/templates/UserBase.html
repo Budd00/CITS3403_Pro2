@@ -1,3 +1,4 @@
+<!-- this is the top nevigator, each page will extend from this html file -->
 <html>
 
 <head>
@@ -10,7 +11,6 @@
     <link rel="stylesheet" href="../static/login_css.css" type="text/css">
     <link rel="stylesheet" href="../static/style6.css">
 </head>
-
 <body>
     <div class="loc_header">
     <img src="http://static.weboffice.uwa.edu.au/visualid/graphics/uwacrest.png" >
@@ -22,9 +22,11 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
+                    <!-- if user has not login -->
                     {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('welcome') }}">Home</a></li>
                     <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <!-- if user is admin -->
                     {% elif current_user.if_adm() %}
                     <li><a href="{{ url_for('AdminWelcome') }}">Home</a></li>
                     <li><a href="{{ url_for('Upload_question') }}">Upload Questions</a></li>
@@ -32,6 +34,7 @@
                     <li><a href="{{ url_for('get_answer') }}">Mark</a></li>
                     <li><a href="{{ url_for('User_management') }}">User management</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <!-- if user is not admin -->
                     {% else %}
                     <li><a href="{{ url_for('welcome') }}">Home</a></li>
                     <li><a href="{{ url_for('get_test') }}">Quiz</a></li>
@@ -62,7 +65,7 @@
     <br>
     <footer class="footer navbar-fixed-bottom ">
         <div class="loc_footer">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quam hic illum accusamus eius nobis dolorem dicta est veritatis, id quis minus ipsum fugiat maiores ullam aspernatur, ducimus non rem?
+            Designed by: Ruilin Hu, Shu Zhou, Xi Rao, Xinhao Hao
         </div>
     </footer>
 </body>

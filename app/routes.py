@@ -1,3 +1,4 @@
+# this page sets routes for each page
 from flask import render_template, flash, redirect, url_for, request, send_from_directory
 from flask_login import logout_user, login_user, current_user, login_required
 from app.models import User, questions,answer
@@ -8,15 +9,14 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField
 from wtforms.validators import ValidationError, DataRequired
 
-
-# app = Flask(__name__)
+# root page
 app.secret_key = 'SECRET KEY'
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('Application.html')
 
-
+# route for login page
 @app.route('/Login', methods=['POST', 'GET'])
 def login():
     if current_user.is_authenticated:
@@ -36,25 +36,26 @@ def login():
         return redirect(next_page)
     return render_template('Can_log.html', title='Sign In', form=form)
 
-
+# route for welcome page
 @app.route('/welcome', methods=['GET', 'POST'])
 @login_required
 def welcome():
     return render_template('welcome.html', title='Home')
 
+# route for welcome page of administrator
 @app.route('/AdminWelcome', methods=['GET', 'POST'])
 def AdminWelcome():
     return render_template('AdminWelcome.html')
 
+# route for logout, redirect them to root page
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
+# route for register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('welcome'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
@@ -68,7 +69,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
+# route for student to get test
 @app.route('/test', methods=['GET', 'POST'])
 @login_required
 def get_test():
@@ -87,7 +88,7 @@ def get_test():
         return redirect(url_for('Que',tag=tagvalue, index="0"))
     return render_template('test.html', title='test', form=form)
 
-
+# route for answering questions
 @app.route('/questions?tag=<tag>&index=<index>', methods=['GET', 'POST'])
 @login_required
 def Que(tag,index):
@@ -113,15 +114,14 @@ def Que(tag,index):
         db.session.commit()
            
     return render_template('Questions.html', title='Questions', form=form,question=que,tag=tag, nextindex=str(index+1),lastindex=str(index-1),limit=limit)
-
-
-
-
+    
+# route for administrator manual check
 @app.route('/mark', methods=['GET', 'POST'])
 @login_required
 def mark():
     class TagForm(FlaskForm):
         pass
+
     setattr(TagForm, 'tag', SelectField(validators=[
             DataRequired('Please select a tag')], choices=controller.get_tags()))
     setattr(TagForm, 'submit', SubmitField('get quiz'))
@@ -137,7 +137,7 @@ def mark():
         mark=zip(mark,weight)
     return render_template('mark.html', title='mark',form=form,marks=mark,mark_sum=mark_sum,weight_sum=weight_sum)
 
-
+# route for admin upload question set
 @app.route('/Upload_question', methods=['GET', 'POST'])
 @login_required
 def Upload_question():
@@ -155,7 +155,7 @@ def Upload_question():
         flash("Questions saved!")
     return render_template('Upload_question.html', title='Upload_question', form=form)
 
-
+# route to remove, add and make other users admin
 @app.route('/User_management', methods=['GET', 'POST'])
 @login_required
 def User_management():
@@ -165,7 +165,7 @@ def User_management():
 
     return render_template('User_management.html', title='User_management', Users_list=users)
     
-
+# get user id for delete
 @app.route('/delete/<user_id>')
 @login_required
 def delete_user(user_id):
@@ -175,7 +175,7 @@ def delete_user(user_id):
     flash("User"+str(user_id)+ " has been deleted!")
     return redirect(url_for('User_management'))
 
-
+# make user an admin
 @app.route('/make_admin/<user_id>')
 @login_required
 def make_admin(user_id):
@@ -185,7 +185,7 @@ def make_admin(user_id):
     flash("User"+str(user_id)+ " now is admin!")
     return redirect(url_for('User_management'))
 
-
+# let admin to manual check questions
 @app.route('/manual_check?tag=<tag>&user_id=<user_id>&index=<index>', methods=['GET', 'POST'])
 @login_required
 def manual_check(tag,user_id,index):
@@ -210,7 +210,7 @@ def manual_check(tag,user_id,index):
     
     return render_template('manual_check.html', title='manual_check', form=form, question=que, answer=answers, nextindex=str(index+1), lastindex=str(index-1), limit=limit,user_id=user_id,tag=tag)
 
-
+# get answer submitted by user
 @app.route('/get_answer', methods=['GET', 'POST'])
 @login_required
 def get_answer():
@@ -237,7 +237,7 @@ def get_answer():
 
     return render_template('get_answer.html', title='get_answer', form=form)
 
-
+# manage questions
 @app.route('/manage_que', methods=['GET', 'POST'])
 @login_required
 def manage_que():
@@ -246,7 +246,7 @@ def manage_que():
     quelist = questions.query.all()
     return render_template('manage_que.html', title='Manage questions',que_list=quelist)
 
-
+# delete question, redirect to manage_que
 @app.route('/delete_que?que_id=<que_id>', methods=['GET', 'POST'])
 @login_required 
 def delete_que(que_id):
@@ -258,7 +258,7 @@ def delete_que(que_id):
     flash("Question"+str(que_id) + " has been deleted!")
     return redirect(url_for('manage_que'))
 
-
+# finished answering question set
 @app.route('/ending', methods=['GET', 'POST'])
 @login_required
 def ending():

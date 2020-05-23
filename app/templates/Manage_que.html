@@ -1,3 +1,4 @@
+  <!-- this page is used to delete questions  -->
 {% extends "UserBase.html" %}
 
 {% block content %}
@@ -5,7 +6,7 @@
 <h1>User Manager</h1>
 <hr>
 <table border="1px">
-    
+    <!-- iteratively load content of each question -->
     {% for que in que_list %}
         {% include 'Question_unit.html' %}
     {% endfor %}
