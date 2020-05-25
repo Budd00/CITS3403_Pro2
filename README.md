@@ -86,6 +86,10 @@ Unit test: Simple test for database, model.
 
 System test: Test for views.
 
+![](2020-05-25-22-12-59.png)
+![](2020-05-25-22-13-21.png)
+
+
 ### How to run tests?
 
 Before running Unittest, you have to download chromedrive and change setting in app/__init__.py.
