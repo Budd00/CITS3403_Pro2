@@ -1,4 +1,5 @@
 # CITS3403_Pro2
+# Authors: Shu Zhou 22552162, Ruilin Hu 22592495, Xi Rao 22435044, Xinhao Hao 21890522
 
 ## A brief introduction
 Multi-user quiz application allow administrators to set question sets, users to submit answers to the questions, and manual or automatic assessment of those answers.
@@ -97,7 +98,7 @@ Before running Unittest, you have to download chromedrive and change setting in 
 
 Download chromedriver from https://chromedriver.chromium.org/
 
-(Note: The version of chrome drive you download has to be the same version as your chrome browser.) 
+Changing app.config.from_object(Config) to app.config.from_object(ConfigTest)
 
 This is to prevent permenantly modification to data base.
 
@@ -116,3 +117,9 @@ To run the test, use command line:
 `python -m test.unit`
 
 `python -m test.test`
+
+## External js
+app.js Author: Vincent Garreau  - vincentgarreau.com
+particals.js Author: Vincent Garreau  - vincentgarreau.com
+
+Background of Application.html.
