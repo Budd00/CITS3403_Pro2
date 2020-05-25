@@ -100,14 +100,6 @@ Download chromedriver from https://chromedriver.chromium.org/
 
 (Note: The version of chrome you download has to be the same as your chrome browser)
 
-This is to prevent permenantly modification to data base.
-
-Change it back to:
-
-`app.config.from_object(Config)`
-
-After testing for normal use.
-
 First make sure your project is running in background using command:
 
 `flask run &`
