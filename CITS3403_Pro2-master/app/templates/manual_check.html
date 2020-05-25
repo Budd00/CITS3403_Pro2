@@ -1,0 +1,96 @@
+<!-- this is the page for admin to manually mark questions -->
+{% extends "Userbase.html" %}
+{% block content %}
+
+<style>
+    .num{
+        position: relative;
+        right: 195px;
+        top: 38px;
+        font-size: 18px;
+        
+    }
+
+    .container{
+       margin-top: 50px;
+        text-align: center;
+
+    }
+    .answerTable{
+        font-size: 20px;
+        width: 80px;
+        height: 40px;
+        resize: none;       
+    }
+    .btn2{
+        font-size: 16px;
+        background-color:green;
+    }
+    .aaa{
+        position: relative;
+        top:3px
+    }
+    .bbb{
+        position: relative;
+        top:4px;
+        left: 2px;
+    }
+   .next{
+        position: relative;
+        left: 110px;
+        bottom: 51px;
+        font-size: 25px;
+    }
+    .last{
+        position: relative;
+        left: -100px;
+        bottom: 50px;
+        font-size: 25px;        
+    }
+    .end{ 
+        position: relative;
+        left:110px;
+        bottom: 50px;
+        font-size: 25px;  
+    }
+</style>
+
+
+<div class="container" >
+    <p class="num"><b>{{ nextindex }}:</b></p>
+    <p>{% for i in question %}</p>
+    <p style="font-size: 20px;">{{i}}</p>
+    {% endfor %}
+    <p>User{{ user_id }}'s answer</p>
+    {% for j in answer %}
+    <p>{{ j }}</p>
+    {% endfor %}
+    <form action="" method="post" id=form>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.Mark(size=5,class_="answerTable") }} / {{ full_mark }}<br>
+        </p>
+        <p>{{ form.submit(class_="btn btn-success btn2", id_=submit) }}</p>
+    </form>
+    <script>form
+        $("#form").change(function () {
+            $("#submit").trigger("click");
+        });
+    </script>
+
+{% if limit and nextindex!="1" %}
+<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><span class="glyphicon glyphicon-chevron-left aaa"></span>last</a>
+<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<span class="glyphicon glyphicon-chevron-right aaa"></span></a>
+{% elif limit %}
+<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<span class="glyphicon glyphicon-chevron-right aaa"></span></a>
+{% elif nextindex!="1" %}
+<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><span class="glyphicon glyphicon-chevron-left aaa"></span>last</a>
+<a class="end" href="{{url_for('ending')}}">End<span class="glyphicon glyphicon-info-sign bbb"></span></a>
+{% else %}
+<a class="end" href="{{url_for('ending')}}">End<span class="glyphicon glyphicon-info-sign bbb"></span></a>
+{% endif%}
+
+<br>
+<br>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<!-- question information -->
+<div style="background-color: lightgray; margin-bottom: 10px; margin-top: 10px; margin-left: 40px; margin-right: 40px; padding: 20px;">
+    
+    <p> <b>Question set:</b> {{ que.get_set() }} </p>
+    <p> <b>Question ID:</b> {{ que.get_id() }} </p>
+    <p> <b>Question:</b> {{ que.get_content() }} </p>
+    <p> <b>answer:</b> {{ que.get_answer() }}</p>
+    <div>
+        <a href="{{ url_for('delete_que',que_id=que.get_id() ) }}"> Delete </a>
+    </div>
+   
+</div>

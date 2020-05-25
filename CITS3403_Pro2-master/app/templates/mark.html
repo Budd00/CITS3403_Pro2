@@ -1,0 +1,69 @@
+<!-- this is the page for normal users to check the marks they got. -->
+{% extends "UserBase.html" %}
+
+{% block content %}
+
+<style>
+   
+    .set{
+        width: 120px;
+        height: 20px;
+    }
+
+    .btn1 {
+      background: none;
+      vertical-align: middle;
+      background-color: lightgray;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid grey;
+      width: 100px;
+      height: 25px;
+      border-radius: 3px;
+    }
+    .btn1:hover{
+      background-color: grey;
+    }
+
+   
+</style>
+<div class="well" style="width: 50em; margin: auto;  background-color:#fff">
+
+
+<h4 style="text-align: center;">Quiz result</h4> <hr>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        
+        <p class="center">
+            Choose your question set:&nbsp;&nbsp;&nbsp;&nbsp;{{ form.tag(class_="set") }} &nbsp;&nbsp;&nbsp;&nbsp; {{ form.submit(class_="btn1")}}
+        </p>
+       
+    </form>
+    <tr>
+        <th width="80px">Question Number</th>
+        <th width="80px">Weight</th>
+        <th width="80px">Mark you got</th>
+    </tr>
+    {% if mark_sum != -1 %}
+    {% for mark in marks %}
+    <tr>
+        <td>No.{{loop.index}}</td>
+        <td> {{ mark[1] }}</td>
+        <td> {{ mark[0] }} </td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td> Totle: </td>
+        <td> {{ weight_sum }} </td>
+        <td> {{ mark_sum }} </td>
+    </tr>
+    {% else %}
+    <p style="color: red">Assesment is not finished yet!</p>
+    {% endif %}
+</table>
+</div>
+
+{% endblock %}
