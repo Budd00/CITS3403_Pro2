@@ -1,0 +1,61 @@
+<!-- This the page for admin to choose answers of a student -->
+{% extends "Userbase.html" %}
+{% block content %}
+
+
+<style>
+    .subject{margin:0 auto;width:290px; margin-top: 50px;  }
+    .whichone{margin:0 auto;width:290px; margin-top: 60px;}
+    .title{text-align: center; margin-top: 100px; margin-left: -60px; color:darkturquoise;}
+    .button1 {
+        margin-top: 40px;
+        margin-left: 40px;
+        width: 100px; 
+        height: 30px; 
+        border-width: 0px; 
+        background: rgb(24, 138, 252); 
+        cursor: pointer;  
+        color: white;
+        font-size: 17px; 
+        border-radius: 10px;
+     }
+    .button1:hover{
+        background: #5599FF;
+     }
+    body{color:slategrey;background-color:whitesmoke;}
+    .inputInGetAnswer{
+        width:200px;
+        height:40px;
+        font-size:20px;
+    }
+
+   
+</style>
+    <form action="" method="post">
+        <div class="title">
+            <h1>CHOOSE TAG AND USER</h1>
+        </div>
+        <div class="subject">
+        <h4>Choose your exam's type:</h4>
+        {{ form.tag(class_="inputInGetAnswer") }}  
+        </div>
+        <div class="whichone" >   
+            <h4>Choose user:</h4> 
+            {{ form.user(class_="inputInGetAnswer") }}
+            <p>{{ form.submit(class_="button1") }}</p>
+        </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
