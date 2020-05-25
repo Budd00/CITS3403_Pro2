@@ -3,6 +3,8 @@
 ## A brief introduction
 Multi-user quiz application allow administrators to set question sets, users to submit answers to the questions, and manual or automatic assessment of those answers.
 
+This project is developed under MAC OS.
+
 This project should be ran while virtual environment is activated.
 To install virtual environment(venv), type in your terminal:
 
