@@ -48,4 +48,3 @@ class QuestionForm( FlaskForm ):
 class MarkForm( FlaskForm ):
     Mark = IntegerField('Mark', validators=[InputRequired()])
     submit = SubmitField('Submit')
-

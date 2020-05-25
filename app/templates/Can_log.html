@@ -1,5 +1,5 @@
+<!-- This is the page for normal user log in -->
 {% extends "UserBase.html" %}
-
 {% block content %}
 <style>
   * {
@@ -91,11 +91,8 @@ color: #72a0f0;
       </p>
       <!-- submit button -->
       <p>
-        {{form.submit(id = 'submit',class_="btn")}}
+        {{form.submit(id_= 'submit',class_="btn")}}
       </p>
-      <!--<div class="form-group" style ="text-align: center;">-->
-          <!--<button type="submit" class="btn" style="background-color: white;">Sign in</button>-->
-      <!--</div>-->
       <!-- redirect for register -->
       <div class="m">
         Don`t have account? <a href="{{ url_for('register') }}">Sign up</a>
