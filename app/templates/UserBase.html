@@ -9,6 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/login_css.css" type="text/css">
     <link rel="stylesheet" href="../static/style6.css">
+    <style>
+        .f{
+            float: left;
+            margin-top: 8px;
+            color: grey;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,8 +34,19 @@
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     {% elif current_user.if_adm() %}
                     <li><a href="{{ url_for('AdminWelcome') }}">Home</a></li>
-                    <li><a href="{{ url_for('Upload_question') }}">Upload Questions</a></li>
-                    <li><a href="{{ url_for('manage_que') }}">Delete Questions</a></li>
+                   
+
+                    <div class='btn-toolbar f'>
+                        <div class='btn-group'>
+                            <a href='javascript:;' class='btn dropdown-toggle' data-toggle='dropdown' style="color: grey;">Question </a>
+                            <ul class='dropdown-menu'>
+                                <li><a href="{{ url_for('Upload_question') }}">Upload Questions</a></li>
+                                <li><a href="{{ url_for('manage_que') }}">Delete Questions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                                 
+    
                     <li><a href="{{ url_for('get_answer') }}">Mark</a></li>
                     <li><a href="{{ url_for('User_management') }}">User management</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -47,7 +65,7 @@
     {% if messages %}
     <ul id = "get_flashed">
         {% for message in messages %}
-        <li>{{ message }}</li>
+        <li style="font-size: 14px;color:red;margin-left: 20px;">{{ message }}</li>
         {% endfor %}
     </ul>
     {% endif %}
@@ -65,6 +83,10 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quam hic illum accusamus eius nobis dolorem dicta est veritatis, id quis minus ipsum fugiat maiores ullam aspernatur, ducimus non rem?
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 </body>
 
 
