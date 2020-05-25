@@ -98,6 +98,18 @@ System test: Test for views.
 
 ### How to run tests?
 
+Before running test, please first change app/config.py. Change the 9th line to:
+
+`app.config.from_object(ConfigTest)`
+
+This is to prevent permenantly modification to data base.
+
+Change it back to:
+
+`app.config.from_object(Config)`
+
+After testing for normal use.
+
 First make sure your project is running in background using command:
 
 `flask run &`
