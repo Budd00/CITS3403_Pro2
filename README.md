@@ -42,18 +42,6 @@ To run the project, use command line:
 
 The system will be running on http://localhost:5000
 
-## Running Unittest 
-
-Before running Unittest, you have to download chromedrive and change setting in app/__init__.py.
-
-Download chromedriver from https://chromedriver.chromium.org/
-
-Changing app.config.from_object(Config) to app.config.from_object(ConfigTest)
-
-python -m test.unit
-
-python -m test.test
-
 ## Let's take a tour!
 
 While the project is running, the first page is a welcome page.
@@ -98,9 +86,11 @@ System test: Test for views.
 
 ### How to run tests?
 
-Before running test, please first change app/config.py. Change the 9th line to:
+Before running Unittest, you have to download chromedrive and change setting in app/__init__.py.
 
-`app.config.from_object(ConfigTest)`
+Download chromedriver from https://chromedriver.chromium.org/
+
+Changing app.config.from_object(Config) to app.config.from_object(ConfigTest)
 
 This is to prevent permenantly modification to data base.
 
