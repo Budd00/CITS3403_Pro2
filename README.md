@@ -89,6 +89,7 @@ System test: Test for views.
 ![](2020-05-25-22-12-59.png)
 ![](2020-05-25-22-13-21.png)
 
+(Note: It might not working well on windows or other operating system cause it might pop error 'selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: '. But it worked well on my mac system.)
 
 ### How to run tests?
 
