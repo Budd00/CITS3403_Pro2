@@ -64,15 +64,27 @@
  
 </style>
 
-<div class="time">    <!-- count down -->
-    <input type="text" id="hour" class="a">小时
-    <input type="text" id="minute" class="a">分钟
-    <button id="bn">开始</button>
-    <div id="div0"></div>
-    <script src="../static/javaScript.js"></script>
-        
-    </script>
-    </div>
+<div id="timer" style="text-align: center;"></div>
+<div id="warring"></div>
+
+<script>
+    var maxtime = 3; // 
+         function timing() {
+           if (maxtime >= 0) {
+             minutes = Math.floor(maxtime / 60);
+             seconds = Math.floor(maxtime % 60);
+             time = "have time:  " + minutes + " m  " + seconds + " s";
+             document.getElementById("timer").innerHTML = time;
+             --maxtime;
+           } else{
+             clearInterval(timer);
+             alert("time over!");
+             setTimeout("javascript:location.href='/ending'", time*1000);
+           }
+         }
+         timer = setInterval("timing()", 1000);   
+         
+</script>
 
 <div class="container" >
     <p class="num"><b>{{ nextindex }}:</b></p>
@@ -92,6 +104,8 @@
     </form>
 </div>
 
+
+
 {% if limit and nextindex!="1" %}
 <a class="last" href="{{url_for('Que', tag=tag, index=lastindex) }}"><div class="glyphicon glyphicon-chevron-left aaa"></div>last</a>
 <a class="next" href="{{url_for('Que', tag=tag, index=nextindex) }}">next<div class="glyphicon glyphicon-chevron-right aaa"></div></a>
@@ -102,6 +116,9 @@
 <a class="end" href="{{url_for('ending')}}">End<div class="glyphicon glyphicon-info-sign bbb"></div></a>
 {% else %}
 <a href="{{url_for('ending')}}">End</a >
+
+
+
 {% endif%}
 {% endblock %}
 
