@@ -116,3 +116,9 @@ To run the test, use command line:
 `python -m test.unit`
 
 `python -m test.test`
+
+## External js
+app.js Author: Vincent Garreau  - vincentgarreau.com
+particals.js Author: Vincent Garreau  - vincentgarreau.com
+
+Background of Application.html.
