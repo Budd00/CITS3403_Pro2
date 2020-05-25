@@ -1,5 +1,5 @@
+<!-- this is the page for admin to manually mark questions -->
 {% extends "Userbase.html" %}
-
 {% block content %}
 
 <style>
@@ -18,8 +18,8 @@
     }
     .answerTable{
         font-size: 20px;
-        width: 400px;
-        height: 200px;
+        width: 80px;
+        height: 40px;
         resize: none;       
     }
     .btn2{
@@ -35,29 +35,24 @@
         top:4px;
         left: 2px;
     }
-    .next{
+   .next{
         position: relative;
-        left: 80px;
-        bottom: 50px;
+        left: 110px;
+        bottom: 51px;
         font-size: 25px;
-        margin-left: 48%;
     }
     .last{
         position: relative;
-        left: -80px;
+        left: -100px;
         bottom: 50px;
-        font-size: 25px;
-        margin-left: 48%;
+        font-size: 25px;        
     }
-    .end{
+    .end{ 
         position: relative;
-        left: 80px;
-        bottom:84px;
-        font-size: 25px;
-        margin-left: 48%;
+        left:110px;
+        bottom: 50px;
+        font-size: 25px;  
     }
-  
- 
 </style>
 
 
@@ -66,42 +61,36 @@
     <p>{% for i in question %}</p>
     <p style="font-size: 20px;">{{i}}</p>
     {% endfor %}
-</div>
-
-
-
-
-
-<div class="container">
-    <p>{{ user_id }}'s answer</p>
+    <p>User{{ user_id }}'s answer</p>
     {% for j in answer %}
     <p>{{ j }}</p>
     {% endfor %}
-</div>
-
-<div class="container">
-    <form action="" method="post">
+    <form action="" method="post" id=form>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.Mark(size=5,class_="answerTable") }}<br>
+            {{ form.Mark(size=5,class_="answerTable") }} / {{ full_mark }}<br>
         </p>
-        <p>{{ form.submit(class_="btn btn-success btn2") }}</p>
+        <p>{{ form.submit(class_="btn btn-success btn2", id_=submit) }}</p>
     </form>
-</div>
-
+    <script>form
+        $("#form").change(function () {
+            $("#submit").trigger("click");
+        });
+    </script>
 
 {% if limit and nextindex!="1" %}
-<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><div class="glyphicon glyphicon-chevron-left aaa"></div>last</a>
-<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<div class="glyphicon glyphicon-chevron-right aaa"></div></a>
+<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><span class="glyphicon glyphicon-chevron-left aaa"></span>last</a>
+<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<span class="glyphicon glyphicon-chevron-right aaa"></span></a>
 {% elif limit %}
-<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<div class="glyphicon glyphicon-chevron-right aaa"></div></a>
+<a class="next" href="{{url_for('manual_check',user_id = user_id, tag=tag, index=nextindex) }}">next<span class="glyphicon glyphicon-chevron-right aaa"></span></a>
 {% elif nextindex!="1" %}
-<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><div class="glyphicon glyphicon-chevron-left aaa"></div>last</a>
-<a class="end" href="{{url_for('ending')}}">End<div class="glyphicon glyphicon-info-sign bbb"></div></a>
+<a class="last" href="{url_for('manual_check',user_id = user_id,tag=tag,index=lastindex) }}"><span class="glyphicon glyphicon-chevron-left aaa"></span>last</a>
+<a class="end" href="{{url_for('ending')}}">End<span class="glyphicon glyphicon-info-sign bbb"></span></a>
 {% else %}
-<a href="{{url_for('ending')}}">End</a >
+<a class="end" href="{{url_for('ending')}}">End<span class="glyphicon glyphicon-info-sign bbb"></span></a>
 {% endif%}
 
 <br>
 <br>
+</div>
 {% endblock %}

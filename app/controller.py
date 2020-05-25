@@ -18,8 +18,6 @@ def get_tags():
     return tags
 
 # get question contents and quesiton ids
-
-
 def get_questions(tag):
     conn = sqlite3.connect('app.db')
     print('opened database successfully')
@@ -68,7 +66,7 @@ def auto_check(answer, que_id):
 
     return final_mark
 
-
+# given tag and user id, return the mark
 def get_mark(tag, uid):
     conn = sqlite3.connect('app.db')
     print('opened database successfully')
@@ -83,7 +81,7 @@ def get_mark(tag, uid):
         arr.append(row[0])
     return arr,sum(arr)
 
-
+# given a tag of question set, return the mark of that question set
 def get_question_mark(tag):
     conn = sqlite3.connect('app.db')
     print('opened database successfully')
@@ -95,7 +93,7 @@ def get_question_mark(tag):
         arr.append(row[0])
     return arr,sum(arr)
 
-
+# delete a user using his/her id
 def delete_user(user_id):
     conn = sqlite3.connect('app.db')
     print('opened database successfully')
@@ -108,7 +106,7 @@ def delete_user(user_id):
     conn.commit()
     print('successfully deleted')
 
-
+# make a user administrator
 def make_admin(user_id):
     conn = sqlite3.connect('app.db')
     print('opened database successfully')
@@ -118,7 +116,7 @@ def make_admin(user_id):
     conn.commit()
     print('updated successfully')
 
-
+# get a user's answer for a given question
 def get_answer(qid, uid):
     conn = sqlite3.connect('app.db')
     print('opened database successfully')

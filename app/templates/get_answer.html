@@ -1,5 +1,5 @@
+<!-- This the page for admin to choose answers of a student -->
 {% extends "Userbase.html" %}
-
 {% block content %}
 
 
@@ -33,29 +33,20 @@
 </style>
     <form action="" method="post">
         <div class="title">
-            <h1>CHOOSE TAG AND USER</h1>
+            <h1>CHOOSE A TAG AND A USER</h1>
         </div>
         <div class="subject">
-        <h4>Choose your exam's type:</h4>
+        <h4>Choose a exam's tag:</h4>
         {{ form.tag(class_="inputInGetAnswer") }}  
         </div>
         <div class="whichone" >   
-            <h4>Choose user:</h4> 
+            <h4>Choose a user:</h4> 
             {{ form.user(class_="inputInGetAnswer") }}
             <p>{{ form.submit(class_="button1") }}</p>
         </div>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
 
 {% endblock %}

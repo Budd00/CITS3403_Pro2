@@ -1,3 +1,4 @@
+<!-- this is the page for normal users to check the marks they got. -->
 {% extends "UserBase.html" %}
 
 {% block content %}
@@ -46,6 +47,7 @@
         <th width="80px">Weight</th>
         <th width="80px">Mark you got</th>
     </tr>
+    {% if mark_sum != -1 %}
     {% for mark in marks %}
     <tr>
         <td>No.{{loop.index}}</td>
@@ -58,6 +60,9 @@
         <td> {{ weight_sum }} </td>
         <td> {{ mark_sum }} </td>
     </tr>
+    {% else %}
+    <p style="color: red">Assesment is not finished yet!</p>
+    {% endif %}
 </table>
 </div>
 

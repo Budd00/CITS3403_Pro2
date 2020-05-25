@@ -1,16 +1,17 @@
-{% extends "UserBase.html" %}
+  <!-- this page is used to delete questions  -->
+  {% extends "UserBase.html" %}
 
-{% block content %}
-<title>User Manager</title>
-<h1>User Manager</h1>
-<hr>
-<table border="1px">
-    
-    {% for que in que_list %}
-        {% include 'Question_unit.html' %}
-    {% endfor %}
-
-</table>
-
-<a href="{{ url_for('register') }}">Add</a><br>
-{% endblock %}
+  {% block content %}
+  <title>Question_Manager</title>
+  <h1> Question Manager</h1>
+  <hr>
+  <table border="1px">
+      <!-- iteratively load content of each question -->
+      {% for que in que_list %}
+          {% include 'Question_unit.html' %}
+      {% endfor %}
+  
+  </table>
+  
+  <a href="{{ url_for('register') }}">Add</a><br>
+  {% endblock %}

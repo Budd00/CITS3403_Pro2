@@ -1,9 +1,9 @@
+<!-- this is the page admin can upload questions -->
 {% extends "Userbase.html" %}
 
 {% block content %}
 
 <style>
-    /* 通用格式 */
     * {
         margin:0;
         padding:0;
@@ -94,20 +94,20 @@
 <div class="container">  
     <form id="uploadPaper" action="" method="post">
       {{ form.hidden_tag() }}
-      <h3>Upload paper</h3>
-      <h4>input paper which you want to unload,then click summit.</h4>
+      <h3>Upload question</h3>
+      <h4>If there is no stand answer, please keep the stand answer blanket empty.</h4>
       <!-- choose subject -->
       <fieldset> 
-        <p>Choose paper:</p>
+        <p>Question attribute:</p>
 
         {{ form.Tag(size=10,placeholder="TAG",class_="input") }}
         {{ form.Mark(size=10,placeholder="MARK",class_="input") }}
-        {{ form.Stand_answer(size=10,placeholder="STAND ANSWER(if there is no stand answer, please do not enter anything!)",class_="input2") }}
+        {{ form.Stand_answer(size=10,placeholder=" STAND ANSWER",class_="input2") }}
       </fieldset>
       <!-- input context -->
       <fieldset>
         <p>QUESTION:</p>
-        {{ form.Que(size=500,placeholder="upload hour questions here ...",class_="input3") }}
+        {{ form.Que(size=500,placeholder="upload your questions here ...",class_="input3") }}
       </fieldset>
       <fieldset>
         {{ form.submit(class_="button") }}
@@ -116,7 +116,9 @@
       <a class="r" style="color: #72a0f0;" href="{{ url_for('AdminWelcome') }}">End</a>
     </form>
   </div>
-  
+  <br>
+  <br>
+  <br>
   </body>
 
 
