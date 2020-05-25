@@ -98,7 +98,7 @@ Before running Unittest, you have to download chromedrive and change setting in 
 
 Download chromedriver from https://chromedriver.chromium.org/
 
-Changing app.config.from_object(Config) to app.config.from_object(ConfigTest)
+(Note: The version of chrome you download has to be the same as your chrome browser)
 
 This is to prevent permenantly modification to data base.
 
