@@ -8,9 +8,10 @@
     }
 
     #particles-js{   
+     width: 100%;
      height: 72%;
-     margin-top: -300px;
-    }
+     margin-top: -350px;
+    }  /* extrnal lib */
 
     body {
       margin-bottom: 0px;
@@ -20,29 +21,21 @@
       -moz-background-size: 100% 100%;
       -o-background-size: 100% 100%;
       background-size: 100% 100%;
-      
-    }
+    }    /* Adapt to various browsers */
 
-    .s{
-      border: red 1px solid;
+    a {
+      position: relative;
+      top:-280px
     }
-    
   </style>
-        <div class="welcome f" style="color: #FFFFFFFF;">
+        <br><br><br><br>
+        <div class="welcome"  style="color: #FFFFFFFF; width: 800px;margin: 0 auto;">
           <h2 id = "info">Welcome to quiz page</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias corrupti ex minima. Suscipit itaque qui nemo architecto ipsa quis, officiis quibusdam tenetur beatae minima incidunt error voluptate, cupiditate rem eius!</p>
         </div>
-        <br><br>
-        <div class="btn btn-block ">
-          
-        <button type="button" class="btn btn-warning"> <a href="{{ url_for('register') }}">Register now</a></button>
+        <br><br>      
         <div id="particles-js"></div>
-
-     
-
-     
-  
-
+        <a href="{{ url_for('register') }}"><button type="button" class="btn btn-warning" style="margin:0 auto;display:block"> <span style="color:cornflowerblue">Register now<span></button></a>
   <script src="../static/particles.js"></script>
   <script src="../static/app.js"></script>
 
